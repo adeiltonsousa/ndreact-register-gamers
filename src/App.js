@@ -5,14 +5,18 @@ import AddNewGamer from './AddNewGamer'
 import GamerList from './GamerList'
 
 class App extends Component {
-
   state = {
     gamers: [],
   };
 
 
-handleAddGamer = (nome, sobrenome, ngames) => {
-    this.setState(prevState => ({ gamers: [...prevState.gamers, { nome, sobrenome, ngames }] }));
+handleAddGamer = (nome, sobrenome, username, ngames) => {
+    this.setState(prevState => ({ gamers: [...prevState.gamers, {
+      nome,
+      sobrenome,
+      username,
+      ngames
+    }] }));
   };
 
 

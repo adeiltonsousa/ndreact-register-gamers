@@ -1,0 +1,83 @@
+Lista de requisitos:
+
+- Cada nome de usuário precisa ser único;
+
+
+
+### Instruções
+
+Para este exercício, imagine que você está criando uma seção de um videogame simples
+site onde poderíamos adicionar usuários e exibir usuários, juntamente com o
+número de jogos que ele jogou.
+
+** Tarefa **: crie um aplicativo React que nos permite adicionar o nome, o sobrenome e o nome do usuário
+nome de usuário. Quando o usuário é adicionado, o número de jogos que ele jogou é
+padronizado para 0. Cada nome de usuário precisa ser único, por isso não podemos adicionar vários usuários
+com o mesmo nome de usuário. Quando alguém clica em "Adicionar", mas o nome de usuário já
+existe, o aplicativo não deve permitir que um usuário duplicado seja adicionado e
+mostre uma mensagem de erro pelo contrário.
+
+O aplicativo também deve exibir uma lista de usuários, especificamente seus nomes de usuário
+e o número de jogos que eles jogaram (que é padronizado como 0). Se alguém
+tenta adicionar um usuário quando um dos campos está vazio, o botão "Adicionar" deve
+ser desativado.
+
+Nós também devemos ter um botão que nos permite alternar entre mostrar e esconder
+o número de jogos que os usuários jogaram. Por exemplo, o botão pode começar
+como "Ocultar o Número de Jogos Jogados" e o aplicativo pode exibir "username1
+jogou 0 jogos. "Clicar nesse botão deve mudar o texto do botão para
+"Mostrar o Número de Jogos Jogados" e o nome de usuário e a pontuação mostrados podem ser
+mudou para "username1 jogado \ * games".
+
+A administração estatal está no centro do React. Isso nos permite ter uma única fonte
+de verdade para toda a nossa aplicação. Isso significa que não precisamos ter certeza
+que nossos dados são sincronizados em vários componentes; Reaja faz isso por nós. isto
+acontece via fluxo de dados unidirecional: componentes pai passam propriedades para
+componentes infantis como adereços.
+
+Lembre-se que o estado não pode ser modificado fora do componente em que está
+declarado. Se um componente filho precisar passar alguns dados de volta para o pai (por exemplo,
+forma que transmite as informações do novo usuário para o componente que sustenta que o
+parte do usuário), precisaremos repassar retornos de chamada do componente que contém
+Estado todo o caminho até o componente necessário. Ao ligar para esses callbacks, a criança
+componentes são capazes de passar dados para fazer backup para seus pais, que são capazes de
+modificar seu estado. Adereços podem passar por vários componentes para chegar ao
+componente que eles precisam alcançar.
+
+Este exercício prático irá ajudá-lo a consolidar sua compreensão de onde colocar
+estado, como atualizar e acessar o estado, quando usar funcional stateless
+componentes e como usar componentes controlados.
+
+Recomendamos seguir o [Thinking in React Guide] (https://reactjs.org/docs/thinking-in-react.html ao criar seu
+Reagir aplicações.
+
+#### Etapa 1. Divida o aplicativo em uma hierarquia de componentes. Desenhe uma caixa em volta de cada componente React.
+
+#### Passo 2. Determine os dados em nosso aplicativo.
+
+#### Passo 3. Descobrir os dados que devem fazer parte do nosso estado:
+
+1. É passado de um pai via adereços? Se assim for, provavelmente não é estado.
+
+2. Permanece inalterado ao longo do tempo? Se assim for, provavelmente não é estado.
+
+3. Você pode calcular com base em qualquer outro estado ou adereços no seu componente?
+    Se assim for, não é estado.
+
+#### Passo 4. Identifique onde cada pedaço de estado vive.
+
+1. Identifique todos os componentes que renderizam algo com base nesse estado.
+
+2. Se vários componentes precisarem do mesmo pedaço de estado, coloque esse pedaço de estado no componente pai desses componentes.
+
+Se você não consegue encontrar um componente onde faz sentido possuir o estado, crie
+um novo componente simplesmente para manter o estado e adicioná-lo em algum lugar no
+hierarquia acima do componente proprietário comum.
+
+#### Etapa 5. Adicionar fluxo de dados inverso.
+
+Estado deve ser atualizado dentro do componente onde esse estado mora.
+Se passarmos do estado A do componente A para o componente B e depois precisarmos atualizar
+o estado com base em algo que aconteceu no componente B, podemos fazê-lo via
+retornos de chamada: o Componente A não somente passará o estado para o Componente B, mas
+também passa uma função de retorno de chamada que será acionada sempre que o estado precisar ser atualizado.
