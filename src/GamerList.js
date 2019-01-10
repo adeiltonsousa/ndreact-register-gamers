@@ -7,7 +7,7 @@ const GamerList = props => {
             {JSON.stringify(props.gamers)}
             <p>Lista de Gamers</p>
             <ol>
-                {props.gamers.map((game, index) => <Gamer />)}                    
+                {props.gamers.map((gamer, index) => <Gamer gamer={gamer} />)}                    
             </ol>
         </div>
     );

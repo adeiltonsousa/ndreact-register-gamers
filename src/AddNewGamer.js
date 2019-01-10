@@ -3,6 +3,7 @@ import React from 'react';
 class AddNewGamer extends React.Component {
     state = {
         name:'',
+        sobrenome:'',
     }
 
     handleChangeNome = event => {
@@ -19,7 +20,9 @@ class AddNewGamer extends React.Component {
 
     addGamer = event => {
         event.preventDefault();
-        this.props.onAddGamer(this.state.value);
+        const { name, sobrenome } = this.state;
+        const { onAddGamer } = this.props;
+        onAddGamer(`${name} ${sobrenome}`);
     };
 
     inputIsEmpty = () => {

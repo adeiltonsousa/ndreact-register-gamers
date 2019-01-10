@@ -21,7 +21,6 @@ class App extends Component {
     this.setState(prevState => ({ gamers: [...prevState.gamers, gamer] }));
   };
 
-
   render() {
     return (
       <div className="App">
