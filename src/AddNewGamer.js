@@ -2,27 +2,23 @@ import React from 'react';
 
 class AddNewGamer extends React.Component {
     state = {
-        name:'',
+        nome:'',
         sobrenome:'',
+        ngames:0,
     }
 
-    handleChangeNome = event => {
+    handleChangeField = (event) => {
+        const { name, value } = event.target;
         this.setState({
-            name: event.target.value,
-        })
-    }
-
-    handleChangeSobrenome = (event) => {
-        this.setState({
-            sobrenome: event.target.value
+          [name]: value
         })
     }
 
     addGamer = event => {
         event.preventDefault();
-        const { name, sobrenome } = this.state;
+        const { nome, sobrenome, ngames } = this.state;
         const { onAddGamer } = this.props;
-        onAddGamer(`${name} ${sobrenome}`);
+        onAddGamer(nome, sobrenome, ngames);
     };
 
     inputIsEmpty = () => {
@@ -38,20 +34,22 @@ class AddNewGamer extends React.Component {
                     placeholder="Nome"
                     name="nome"
                     value={this.state.nome}
-                    onChange={this.handleChangeNome}
+                    onChange={this.handleChangeField}
                 />
                 <input
                     type="text"
                     placeholder="Sobrenome"
                     name="sobrenome"
                     value={this.state.sobrenome}
-                    onChange={this.handleChangeSobrenome}
+                    onChange={this.handleChangeField}
                 />
                 <br />
                 <label>Nº de Games</label>
                 <input                
                 type="number"
-                value={0}
+                name="ngames"
+                value={this.state.ngames}
+                onChange={this.handleChangeField}
                 /><br />
                 <button disabled={this.inputIsEmpty()}>Registrar</button>
                 {JSON.stringify(this.state)}

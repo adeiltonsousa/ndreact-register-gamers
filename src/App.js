@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import AddNewGamer from './AddNewGamer';
-import GamerList from './GamerList';
-
-/*
-This exercise will help you put together and practice all of the concepts you've
-learned thus far. It will also help you form a strong foundational knowledge of
-React and prepare you for your first project.
-The instructions for this project are located in the `instructions.md` file.
-*/
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import AddNewGamer from './AddNewGamer'
+import GamerList from './GamerList'
 
 class App extends Component {
 
@@ -17,9 +10,11 @@ class App extends Component {
     gamers: [],
   };
 
-  handleAddGamer = gamer => {
-    this.setState(prevState => ({ gamers: [...prevState.gamers, gamer] }));
+
+handleAddGamer = (nome, sobrenome, ngames) => {
+    this.setState(prevState => ({ gamers: [...prevState.gamers, { nome, sobrenome, ngames }] }));
   };
+
 
   render() {
     return (
@@ -30,7 +25,7 @@ class App extends Component {
         </header>
         <div>
           <AddNewGamer onAddGamer={this.handleAddGamer} />
-          <GamerList gamers={this.state.gamers} />  
+          <GamerList gamers={this.state.gamers}/>  
         </div>
       </div>
     );
