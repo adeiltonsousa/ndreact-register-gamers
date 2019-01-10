@@ -2,28 +2,20 @@ import React from 'react';
 
 class AddNewGamer extends React.Component {
     state = {
-        value: {
-            name:'',
-            sobrenome:''
-        },
-    };
+        name:'',
+    }
 
     handleChangeNome = event => {
-        this.setState({ value: event.target.value });
-    };
+        this.setState({
+            name: event.target.value,
+        })
+    }
 
     handleChangeSobrenome = (event) => {
-        this.setState({ value: event.target.value });
-    };
-
-    // UNINDO TODOS O INPUTS
-    // handleInputChange = event => {
-    //     const {name, value} = event.target
-
-    //     this.setState({
-    //         [name]:value
-    //     })
-    // };
+        this.setState({
+            sobrenome: event.target.value
+        })
+    }
 
     addGamer = event => {
         event.preventDefault();
@@ -42,14 +34,14 @@ class AddNewGamer extends React.Component {
                     type="text"
                     placeholder="Nome"
                     name="nome"
-                    value={this.state.value.name}
+                    value={this.state.nome}
                     onChange={this.handleChangeNome}
                 />
                 <input
                     type="text"
                     placeholder="Sobrenome"
                     name="sobrenome"
-                    value={this.state.value.name}
+                    value={this.state.sobrenome}
                     onChange={this.handleChangeSobrenome}
                 />
                 <br />
@@ -59,6 +51,7 @@ class AddNewGamer extends React.Component {
                 value={0}
                 /><br />
                 <button disabled={this.inputIsEmpty()}>Registrar</button>
+                {JSON.stringify(this.state)}
                 <hr />
             </form>
             </div>

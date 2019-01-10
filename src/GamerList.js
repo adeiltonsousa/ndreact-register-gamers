@@ -4,13 +4,13 @@ import Gamer from './Gamer';
 const GamerList = props => {
     return (
         <div>
+            {JSON.stringify(props.gamers)}
             <p>Lista de Gamers</p>
             <ol>
-                {props.gamers.map((gamer, index) => <Gamer key={index} gamer={gamer} />)}                    
+                {props.gamers.map((game, index) => <Gamer />)}                    
             </ol>
         </div>
     );
-
 };
 
 export default GamerList;
